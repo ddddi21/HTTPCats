@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/homeScreenFragment">
+    <fragment
+        android:id="@+id/homeScreenFragment"
+        android:name="com.example.httpcats.presenter.home.HomeScreenFragment"
+        android:label="fragment_home_screen"
+        tools:layout="@layout/home_page_fragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/funFragment"
+        android:name="com.example.httpcats.presenter.fun.FunFragment"
+        android:label="fragment_fun"
+        tools:layout="@layout/fun_fragment">
+        <argument
+            android:name="actionName"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_funFragment_to_jokesFragment"
+            app:destination="@id/jokesFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/jokesFragment"
+        android:name="com.example.httpcats.presenter.joke.JokesFragment"
+        android:label="fragment_jokes"
+        tools:layout="@layout/jokes_fragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/apiActivityFragment"
+        android:name="com.example.httpcats.presenter.apiActivity.ApiActivityFragment"
+        android:label="fragment_apiActivity"
+        tools:layout="@layout/api_activity_fragment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/singleJokeFragment"
+        android:name="com.example.httpcats.presenter.single.SingleJokeFragment"
+        android:label="fragment_singleJokeFragment"
+        tools:layout="@layout/single_joke_fragment">
+    </fragment>
+
+
+
+</navigation>

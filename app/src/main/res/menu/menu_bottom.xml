@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <item
+        android:id="@+id/homeScreenFragment"
+        android:icon="@drawable/home_black_24dp"
+        tools:ignore="MenuTitle" />
+
+    <item
+        android:id="@+id/funFragment"
+        android:icon="@drawable/add_reaction_black_24dp"
+        android:title="Список" />
+
+    <item
+        android:id="@+id/apiActivityFragment"
+        android:icon="@drawable/skateboarding_black_24dp"
+        android:title="Список" />
+
+    <item
+        android:id="@+id/singleJokeFragment"
+        android:icon="@drawable/flutter_dash_black_24dp"
+        android:title="Картиночки" />
+
+</menu>
