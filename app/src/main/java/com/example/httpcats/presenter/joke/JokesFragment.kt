@@ -47,8 +47,8 @@ class JokesFragment : BaseFragment<JokesVM>() {
         }
 
         val actionName = arguments?.getString("actionName")
-        if (!actionName.isNullOrEmpty()){
-            when(actionName) {
+        if (!actionName.isNullOrEmpty()) {
+            when (actionName) {
 //                "random" -> jokesVM.loadRandomJoke()
                 "randomTen" -> jokesVM.loadTenJoke()
 //                "randomIt" -> jokesVM.loadITJoke()
@@ -58,17 +58,28 @@ class JokesFragment : BaseFragment<JokesVM>() {
         } else jokesVM.loadTenJoke()
 
         jokesVM.jokesList.observe(viewLifecycleOwner) { list ->
-                jokesVM.jokeAdapter.updateDataSource(list)
+            jokesVM.jokeAdapter.updateDataSource(list)
             binding.progressBar.visibility = View.GONE
         }
 
         binding.swipe.setOnRefreshListener {
-                binding.swipe.isRefreshing = false
-                jokesVM.loadTenJoke()
-                jokesVM.jokesList.observe(viewLifecycleOwner) {
-                    jokesVM.jokeAdapter.updateDataSource(it)
-                    binding.progressBar.visibility = View.GONE
+            binding.swipe.isRefreshing = false
+            if (!actionName.isNullOrEmpty()) {
+                if (actionName == "randomTen") {
+                    jokesVM.loadTenJoke()
+                } else {
+                    if (actionName == "randomItTen") {
+                        jokesVM.loadTenItJoke()
+                    }
                 }
+            } else{
+                jokesVM.loadTenJoke()
+            }
+
+            jokesVM.jokesList.observe(viewLifecycleOwner) {
+                jokesVM.jokeAdapter.updateDataSource(it)
+                binding.progressBar.visibility = View.GONE
+            }
             binding.progressBar.visibility = View.VISIBLE
         }
         return binding.root
